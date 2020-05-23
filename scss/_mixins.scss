@@ -1,0 +1,45 @@
+// --------------------------------------------- TEXT'S MIXINS
+@mixin link {
+    text-decoration: none;
+    color: #fff;
+    padding: 0 .5rem;
+}
+
+@mixin list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+// --------------------------------------------- end of text's mixins
+
+
+
+// --------------------------------------------- POSITIONS' MIXINS
+@mixin flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// --------------------------------------------- end of position's mixins
+
+// --------------------------------------------- ANIMATIONS' MIXINS
+@mixin tr {
+    transition: all .4s ease-in;
+}
+
+@mixin hover {
+    @include tr();
+    &:hover,
+    &:focus,
+    &:active {
+        @content;
+    }
+}
+// --------------------------------------------- end of animation's mixins

@@ -1,6 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap');
 
-@import 'normalize';
+@font-face {
+    font-family: 'icomoon';
+    src: url('../fonts/icomoon.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/icomoon.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/icomoon.ttf')  format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/icomoon.svg#icomoon') format('svg'); /* Legacy iOS */
+         font-weight: normal;
+         font-style: normal;
+  }
+
+@import 'normalize',
+        '_mixins';
 
 * {
     box-sizing: border-box;
@@ -13,11 +25,174 @@ html {
 
 body {
     min-height: 100%;
-    font: 1.5rem/1.6 'Open Sans', sans-serif;
+    font: 1.5rem/1.6 'icomoon', 'Open Sans', sans-serif;
 }
 
 .container {
     margin: 0 auto;
     max-width: 1140px;
     width: 96%;
+}
+
+// ------------------------------------------------------HEADER
+nav {
+    background-color: #505050;
+    @include flex;
+    height: 55px;
+}
+
+.menu {
+    @include flex;
+    height: 100%;
+}
+
+.burger {
+    // outline: 2px dashed green;
+    background-color: #202020;
+    height: 100%;
+    width: 60px;
+    position: relative;
+    @include flexCenter;
+    @include tr;
+    @include hover {
+        cursor: pointer;
+    }
+}
+
+#check-menu {
+    display: none;
+    width: 100%;
+    height: 100%;
+    &:checked ~ .list {
+        max-height: 300px;
+        padding: 10px 20px;
+    }
+}
+
+.list {
+    @include list;
+    @include tr;
+    position: absolute;
+    // outline: 2px solid red;
+    max-height: 0;
+    width: 200px;
+    background-color: #202020;
+    top: 55px;
+    left: 0%;
+    overflow: hidden;
+    &__item {
+        margin: 5px 0;
+        width: 100%;
+        // outline: 1px solid goldenrod;
+    }
+    &__link {
+        @include link;
+        display: block;
+        width: 100%;
+        // outline: 1px solid ivory;
+        @include hover {
+            color: salmon;
+        }
+    }
+}
+
+.line {
+    height: 2px;
+    width: 18px;
+    background-color: #fff;
+    position: relative;
+    &::before {
+        content: '';
+        display: block;
+        width: 18px;
+        height: 2px;
+        background-color: #fff;
+        position: absolute;
+        top: -4px;
+    }
+    &::after {
+        content: '';
+        display: block;
+        width: 18px;
+        height: 2px;
+        background-color: #fff;
+        position: absolute;
+        top: 4px;
+    }
+}
+
+// ------------------------------------------------------ BREADCRUMBS
+.breadcrumbs {
+    // outline: 2px dashed yellow;
+    width: 500px;
+    height: 100%;
+    color: #fff;
+    padding: 2.5% 24px;
+    @include flex;
+    justify-content: flex-start;
+    &__text {
+        font-weight: bold;
+        margin-right: 24px;
+    }
+    &__link {
+        @include link;
+    }
+}
+
+.next-icon {
+    // outline: 1px solid red;
+    width: 10px;
+    height: 14px;
+    fill: #fff;
+    margin-top: .5%;
+    margin-right: 24px;
+
+}
+
+
+// ------------------------------------------------------ SEARCH-BAR
+.input-wrap {
+    height: 30px;
+    width: 568px;
+    outline: 1px dashed blue;
+}
+
+.search {
+    // outline: 1px dashed red;
+    background-color: #707070;
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+    padding: 5px 40px;
+    color: #fff;
+    margin-right: 16px;
+    width: 568px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #fff;
+    opacity: 1; /* Firefox */
+}
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #fff;
+}
+  
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #fff;
+}
+
+.search-icon {
+    width: 16px;
+    height: 16px;
+    fill: #fff;
+    position: absolute;
+    top: 20px;
+    right: 550px;
+    &__right {
+        right: 30px;
+        top: 24px;
+        width: 12px;
+        height: 12px;
+    }
 }
